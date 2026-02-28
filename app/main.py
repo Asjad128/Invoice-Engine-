@@ -10,6 +10,14 @@ import requests
 app = FastAPI(title="Invoice Engine Pro")
 app.include_router(demo_router)
 
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # change in production
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
 templates = Jinja2Templates(directory="app/templates")
 
 @app.get("/", response_class=HTMLResponse)
