@@ -10,7 +10,6 @@ import requests
 app = FastAPI(title="Invoice Engine Pro")
 app.include_router(demo_router)
 
-app.mount("/static", StaticFiles(directory="app/static"), name="static")
 templates = Jinja2Templates(directory="app/templates")
 
 @app.get("/", response_class=HTMLResponse)
